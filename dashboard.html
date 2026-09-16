@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | SpendWise</title>
+    <meta name="description" content="Income, expense, balance and budget summary in one dashboard.">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo"><i class="fa-solid fa-wallet"></i> Spend<span>Wise</span></a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="transactions.html">Transactions</a></li>
+                <li><a href="budget.html">Budget</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <!-- ============ PAGE HEADER ============ -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Dashboard</h1>
+            <p>Your income, expenses and budget in one place.</p>
+            <nav class="breadcrumb">
+                <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+                <i class="fa-solid fa-chevron-right"></i>
+                <span>Dashboard</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ============ SECTION 1 : SUMMARY CARDS ============ -->
+    <section class="app-section">
+        <div class="container">
+            <div class="summary-grid">
+                <div class="summary-card income-card">
+                    <div class="summary-top">
+                        <p>Total income</p>
+                        <div class="summary-icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
+                    </div>
+                    <div class="summary-value text-success" id="totalIncome">&#8377;0.00</div>
+                    <p class="summary-note">All income entries added so far</p>
+                </div>
+
+                <div class="summary-card expense-card">
+                    <div class="summary-top">
+                        <p>Total expense</p>
+                        <div class="summary-icon"><i class="fa-solid fa-arrow-trend-down"></i></div>
+                    </div>
+                    <div class="summary-value text-danger" id="totalExpense">&#8377;0.00</div>
+                    <p class="summary-note">All expense entries added so far</p>
+                </div>
+
+                <div class="summary-card balance-card">
+                    <div class="summary-top">
+                        <p>Current balance</p>
+                        <div class="summary-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                    </div>
+                    <div class="summary-value" id="currentBalance">&#8377;0.00</div>
+                    <p class="summary-note" id="savingRate">Add income to see this</p>
+                </div>
+
+                <div class="summary-card budget-card">
+                    <div class="summary-top">
+                        <p>Transactions</p>
+                        <div class="summary-icon"><i class="fa-solid fa-receipt"></i></div>
+                    </div>
+                    <div class="summary-value" id="transactionCount">0 entries</div>
+                    <p class="summary-note">Saved in your browser storage</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SECTION 2 : BUDGET SNAPSHOT + CATEGORIES ============ -->
+    <section class="app-section">
+        <div class="container dash-grid">
+
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fa-solid fa-bullseye"></i> Budget for <span id="budgetMonth">this month</span></h3>
+                    <a href="budget.html" class="btn btn-outline btn-sm"><i class="fa-solid fa-sliders"></i> Manage</a>
+                </div>
+
+                <div id="budgetStatus" class="alert alert-info">
+                    <i class="fa-solid fa-circle-info"></i> Loading budget status...
+                </div>
+
+                <div class="progress-wrap">
+                    <div class="progress-labels">
+                        <span>Spent <strong id="budgetSpent">&#8377;0.00</strong></span>
+                        <span>Budget <strong id="budgetAmount">Not set</strong></span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill level-ok" id="budgetProgress"></div>
+                    </div>
+                    <div class="progress-meta">
+                        <span id="budgetPercent">0% used</span>
+                        <span>Remaining <strong id="budgetRemaining">-</strong></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fa-solid fa-chart-simple"></i> Top spending categories</h3>
+                </div>
+                <ul class="cat-list" id="categoryList"></ul>
+                <div class="empty-state hidden" id="categoryEmpty">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <h4>No expenses yet</h4>
+                    <p>Add an expense to see which categories take the most.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============ SECTION 3 : RECENT TRANSACTIONS ============ -->
+    <section class="app-section">
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fa-solid fa-clock-rotate-left"></i> Recent transactions</h3>
+                    <a href="transactions.html" class="btn btn-primary btn-sm">
+                        <i class="fa-solid fa-plus"></i> Add transaction
+                    </a>
+                </div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Category</th>
+                                <th>Type</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recentBody"></tbody>
+                    </table>
+                </div>
+
+                <div class="empty-state hidden" id="recentEmpty">
+                    <i class="fa-solid fa-receipt"></i>
+                    <h4>No transactions yet</h4>
+                    <p>Add your first entry and it will show up here.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SECTION 4 : MONTHLY SUMMARY ============ -->
+    <section class="app-section">
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fa-solid fa-calendar-days"></i> Monthly summary</h3>
+                    <a href="reports.html" class="btn btn-outline btn-sm"><i class="fa-solid fa-chart-column"></i> Full reports</a>
+                </div>
+                <ul class="month-list" id="monthList"></ul>
+                <div class="empty-state hidden" id="monthEmpty">
+                    <i class="fa-solid fa-calendar"></i>
+                    <h4>Nothing to summarise yet</h4>
+                    <p>Once you add transactions, month by month totals appear here.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SECTION 5 : QUICK ACTIONS + RESET ============ -->
+    <section class="app-section">
+        <div class="container">
+            <div class="quick-grid">
+                <a href="transactions.html" class="quick-card">
+                    <i class="fa-solid fa-plus"></i>
+                    <div><strong>Add transaction</strong><span>Record income or expense</span></div>
+                </a>
+                <a href="budget.html" class="quick-card">
+                    <i class="fa-solid fa-bullseye"></i>
+                    <div><strong>Set budget</strong><span>Control monthly spending</span></div>
+                </a>
+                <a href="reports.html" class="quick-card">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <div><strong>View reports</strong><span>Charts and analysis</span></div>
+                </a>
+                <a href="contact.html" class="quick-card">
+                    <i class="fa-solid fa-envelope"></i>
+                    <div><strong>Contact us</strong><span>Send feedback or a question</span></div>
+                </a>
+            </div>
+
+            <div class="card danger-zone" style="margin-top:24px">
+                <div class="card-header"><h3><i class="fa-solid fa-triangle-exclamation"></i> Reset data</h3></div>
+                <p>This removes every saved transaction and the monthly budget from this browser. There is no undo.</p>
+                <button class="btn btn-danger" id="clearAllData"><i class="fa-solid fa-trash"></i> Clear all data</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo"><i class="fa-solid fa-wallet"></i> Spend<span>Wise</span></div>
+                    <p>A personal expense manager built with HTML, CSS and JavaScript. Track income, expenses and budget, stored privately in your browser.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Pages</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="transactions.html">Transactions</a></li>
+                        <li><a href="budget.html">Budget</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>More</h4>
+                    <ul>
+                        <li><a href="reports.html">Reports</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="index.html#features">Features</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fa-solid fa-envelope"></i> support@spendwise.com</li>
+                        <li><i class="fa-solid fa-phone"></i> +91 00000 00000</li>
+                        <li><i class="fa-solid fa-location-dot"></i> Bihar, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 SpendWise. Built as a learning project.</p></div>
+        </div>
+    </footer>
+
+    <div id="toast"><i class="fa-solid fa-circle-check"></i><span id="toastMessage">Message</span></div>
+
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
