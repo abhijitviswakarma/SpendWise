@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget | SpendWise</title>
+    <meta name="description" content="Set a monthly budget, watch the progress bar and get a warning before you overspend.">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo"><i class="fa-solid fa-wallet"></i> Spend<span>Wise</span></a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="transactions.html">Transactions</a></li>
+                <li><a href="budget.html">Budget</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>Monthly budget</h1>
+            <p>Decide a limit, then watch how much of it is left.</p>
+            <nav class="breadcrumb">
+                <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+                <i class="fa-solid fa-chevron-right"></i>
+                <span>Budget</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ============ SECTION 1 : BUDGET STATS ============ -->
+    <section class="app-section">
+        <div class="container">
+            <div class="alert alert-info" style="margin-bottom:20px">
+                <i class="fa-solid fa-calendar-days"></i> Showing figures for <strong id="currentMonthLabel">this month</strong>
+            </div>
+
+            <div class="summary-grid">
+                <div class="summary-card budget-card">
+                    <div class="summary-top">
+                        <p>Monthly budget</p>
+                        <div class="summary-icon"><i class="fa-solid fa-bullseye"></i></div>
+                    </div>
+                    <div class="summary-value" id="statBudget">Not set</div>
+                </div>
+                <div class="summary-card expense-card">
+                    <div class="summary-top">
+                        <p>Spent this month</p>
+                        <div class="summary-icon"><i class="fa-solid fa-arrow-trend-down"></i></div>
+                    </div>
+                    <div class="summary-value text-danger" id="statSpent">&#8377;0.00</div>
+                </div>
+                <div class="summary-card balance-card">
+                    <div class="summary-top">
+                        <p>Remaining</p>
+                        <div class="summary-icon"><i class="fa-solid fa-piggy-bank"></i></div>
+                    </div>
+                    <div class="summary-value" id="statRemaining">-</div>
+                </div>
+                <div class="summary-card income-card">
+                    <div class="summary-top">
+                        <p>Income this month</p>
+                        <div class="summary-icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
+                    </div>
+                    <div class="summary-value text-success" id="statMonthIncome">&#8377;0.00</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SECTION 2 : SET BUDGET + PROGRESS ============ -->
+    <section class="app-section">
+        <div class="container form-col-grid">
+
+            <div class="card">
+                <div class="card-header"><h3><i class="fa-solid fa-sliders"></i> Set your budget</h3></div>
+
+                <form id="budgetForm" novalidate>
+                    <div class="form-group">
+                        <label for="budgetInput">Budget amount for this month (&#8377;)</label>
+                        <input type="number" id="budgetInput" class="form-control" placeholder="e.g. 8000" step="1" min="0">
+                        <span class="error-message" id="budgetInputError"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <i class="fa-solid fa-floppy-disk"></i> Save budget
+                    </button>
+
+                    <button type="button" class="btn btn-secondary btn-block hidden" id="removeBudget" style="margin-top:12px">
+                        <i class="fa-solid fa-xmark"></i> Remove budget
+                    </button>
+                </form>
+
+                <div class="alert alert-info" style="margin-top:20px;margin-bottom:0">
+                    <i class="fa-solid fa-circle-info"></i> Only expenses dated in the current month count towards this budget.
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header"><h3><i class="fa-solid fa-gauge-high"></i> Spending progress</h3></div>
+
+                <div id="budgetWarning" class="alert alert-info">
+                    <i class="fa-solid fa-circle-info"></i> Loading...
+                </div>
+
+                <div class="progress-wrap">
+                    <div class="progress-labels">
+                        <span>Spent <strong id="progressSpent">&#8377;0.00</strong></span>
+                        <span>Budget <strong id="progressBudget">&#8377;0.00</strong></span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill level-ok" id="budgetProgressBar"></div>
+                    </div>
+                    <div class="progress-meta">
+                        <span id="progressPercent">0%</span>
+                        <span id="daysLeft">0 days left this month</span>
+                    </div>
+                </div>
+
+                <div class="alert alert-success" style="margin-top:22px;margin-bottom:0">
+                    <i class="fa-solid fa-calculator"></i> <span id="dailyAllowance">No daily limit to show yet</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============ SECTION 3 : CATEGORY SHARE ============ -->
+    <section class="app-section">
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fa-solid fa-chart-simple"></i> Where this month's money went</h3>
+                    <a href="reports.html" class="btn btn-outline btn-sm"><i class="fa-solid fa-chart-pie"></i> Full reports</a>
+                </div>
+                <ul class="cat-list" id="budgetCategoryList"></ul>
+                <div class="empty-state hidden" id="budgetCategoryEmpty">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <h4>No expenses this month</h4>
+                    <p>Add an expense dated this month to see the split.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SECTION 4 : BUDGETING TIPS ============ -->
+    <section class="app-section">
+        <div class="container">
+            <div class="card">
+                <div class="card-header"><h3><i class="fa-solid fa-lightbulb"></i> Simple budgeting habits</h3></div>
+                <div class="two-col">
+                    <ul class="cat-list">
+                        <li style="display:flex;gap:12px;margin-bottom:16px">
+                            <i class="fa-solid fa-circle-check" style="color:var(--success);margin-top:5px"></i>
+                            <div><strong>Follow the 50 / 30 / 20 split</strong>
+                                <p style="font-size:0.9rem;color:var(--gray-500)">Half for needs, a third for wants, the rest saved.</p></div>
+                        </li>
+                        <li style="display:flex;gap:12px;margin-bottom:16px">
+                            <i class="fa-solid fa-circle-check" style="color:var(--success);margin-top:5px"></i>
+                            <div><strong>Record the same day</strong>
+                                <p style="font-size:0.9rem;color:var(--gray-500)">Entries added later are usually wrong or forgotten.</p></div>
+                        </li>
+                        <li style="display:flex;gap:12px">
+                            <i class="fa-solid fa-circle-check" style="color:var(--success);margin-top:5px"></i>
+                            <div><strong>Review once a week</strong>
+                                <p style="font-size:0.9rem;color:var(--gray-500)">A quick Sunday check keeps the month from slipping.</p></div>
+                        </li>
+                    </ul>
+                    <ul class="cat-list">
+                        <li style="display:flex;gap:12px;margin-bottom:16px">
+                            <i class="fa-solid fa-circle-check" style="color:var(--success);margin-top:5px"></i>
+                            <div><strong>Watch the top category</strong>
+                                <p style="font-size:0.9rem;color:var(--gray-500)">Cutting the biggest one moves the total the most.</p></div>
+                        </li>
+                        <li style="display:flex;gap:12px;margin-bottom:16px">
+                            <i class="fa-solid fa-circle-check" style="color:var(--success);margin-top:5px"></i>
+                            <div><strong>Keep a small buffer</strong>
+                                <p style="font-size:0.9rem;color:var(--gray-500)">Set the budget slightly below what you can afford.</p></div>
+                        </li>
+                        <li style="display:flex;gap:12px">
+                            <i class="fa-solid fa-circle-check" style="color:var(--success);margin-top:5px"></i>
+                            <div><strong>Use the daily figure</strong>
+                                <p style="font-size:0.9rem;color:var(--gray-500)">A per-day number is easier to follow than a monthly one.</p></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo"><i class="fa-solid fa-wallet"></i> Spend<span>Wise</span></div>
+                    <p>A personal expense manager built with HTML, CSS and JavaScript. Track income, expenses and budget, stored privately in your browser.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Pages</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="transactions.html">Transactions</a></li>
+                        <li><a href="budget.html">Budget</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>More</h4>
+                    <ul>
+                        <li><a href="reports.html">Reports</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="index.html#features">Features</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fa-solid fa-envelope"></i> support@spendwise.com</li>
+                        <li><i class="fa-solid fa-phone"></i> +91 00000 00000</li>
+                        <li><i class="fa-solid fa-location-dot"></i> Bihar, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 SpendWise. Built as a learning project.</p></div>
+        </div>
+    </footer>
+
+    <div id="toast"><i class="fa-solid fa-circle-check"></i><span id="toastMessage">Message</span></div>
+
+    <script src="js/main.js"></script>
+    <script src="js/budget.js"></script>
+</body>
+</html>
