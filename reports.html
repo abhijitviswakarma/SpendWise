@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports | SpendWise</title>
+    <meta name="description" content="Category-wise and month-wise charts built from your saved transactions.">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo"><i class="fa-solid fa-wallet"></i> Spend<span>Wise</span></a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="transactions.html">Transactions</a></li>
+                <li><a href="budget.html">Budget</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>Reports</h1>
+            <p>See where the money actually goes.</p>
+            <nav class="breadcrumb">
+                <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+                <i class="fa-solid fa-chevron-right"></i>
+                <span>Reports</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ============ SECTION 1 : OVERVIEW ============ -->
+    <section class="app-section">
+        <div class="container">
+            <div class="summary-grid">
+                <div class="summary-card income-card">
+                    <div class="summary-top">
+                        <p>Total income</p>
+                        <div class="summary-icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
+                    </div>
+                    <div class="summary-value text-success" id="repIncome">&#8377;0.00</div>
+                </div>
+                <div class="summary-card expense-card">
+                    <div class="summary-top">
+                        <p>Total expense</p>
+                        <div class="summary-icon"><i class="fa-solid fa-arrow-trend-down"></i></div>
+                    </div>
+                    <div class="summary-value text-danger" id="repExpense">&#8377;0.00</div>
+                </div>
+                <div class="summary-card balance-card">
+                    <div class="summary-top">
+                        <p>Net savings</p>
+                        <div class="summary-icon"><i class="fa-solid fa-piggy-bank"></i></div>
+                    </div>
+                    <div class="summary-value" id="repBalance">&#8377;0.00</div>
+                </div>
+                <div class="summary-card budget-card">
+                    <div class="summary-top">
+                        <p>Average expense</p>
+                        <div class="summary-icon"><i class="fa-solid fa-divide"></i></div>
+                    </div>
+                    <div class="summary-value" id="repAverage">&#8377;0.00</div>
+                </div>
+            </div>
+
+            <div class="empty-state card hidden" id="reportsEmpty" style="margin-top:24px">
+                <i class="fa-solid fa-chart-pie"></i>
+                <h4>No data to chart yet</h4>
+                <p>Add a few transactions and the charts will build themselves.</p>
+                <a href="transactions.html" class="btn btn-primary" style="margin-top:16px">
+                    <i class="fa-solid fa-plus"></i> Add a transaction
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div id="reportsContent">
+
+        <!-- ============ SECTION 2 : CATEGORY + INCOME SOURCES ============ -->
+        <section class="app-section">
+            <div class="container two-col">
+                <div class="card">
+                    <div class="card-header"><h3><i class="fa-solid fa-chart-pie"></i> Expenses by category</h3></div>
+                    <div class="chart-box"><canvas id="categoryChart"></canvas></div>
+                    <p class="chart-note"><i class="fa-solid fa-circle-info"></i> Share of every rupee you have spent.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header"><h3><i class="fa-solid fa-hand-holding-dollar"></i> Income sources</h3></div>
+                    <div class="chart-box"><canvas id="incomeChart"></canvas></div>
+                    <p class="chart-note"><i class="fa-solid fa-circle-info"></i> Where your income comes from.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ SECTION 3 : MONTHLY COMPARISON ============ -->
+        <section class="app-section">
+            <div class="container">
+                <div class="card">
+                    <div class="card-header"><h3><i class="fa-solid fa-chart-column"></i> Income vs expense by month</h3></div>
+                    <div class="chart-box"><canvas id="monthlyChart"></canvas></div>
+                    <p class="chart-note"><i class="fa-solid fa-circle-info"></i> Last six months with recorded activity.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ SECTION 4 : SAVINGS TREND ============ -->
+        <section class="app-section">
+            <div class="container">
+                <div class="card">
+                    <div class="card-header"><h3><i class="fa-solid fa-chart-line"></i> Savings trend</h3></div>
+                    <div class="chart-box"><canvas id="trendChart"></canvas></div>
+                    <p class="chart-note"><i class="fa-solid fa-circle-info"></i> Income minus expense for each month. Below zero means you overspent.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ SECTION 5 : TOP CATEGORIES TABLE ============ -->
+        <section class="app-section">
+            <div class="container">
+                <div class="card">
+                    <div class="card-header"><h3><i class="fa-solid fa-ranking-star"></i> Biggest spending categories</h3></div>
+
+                    <div id="reportInsight" class="alert alert-info">
+                        <i class="fa-solid fa-lightbulb"></i> Loading insight...
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>Category</th>
+                                    <th>Entries</th>
+                                    <th>Total spent</th>
+                                </tr>
+                            </thead>
+                            <tbody id="rankBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo"><i class="fa-solid fa-wallet"></i> Spend<span>Wise</span></div>
+                    <p>A personal expense manager built with HTML, CSS and JavaScript. Track income, expenses and budget, stored privately in your browser.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Pages</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="transactions.html">Transactions</a></li>
+                        <li><a href="budget.html">Budget</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>More</h4>
+                    <ul>
+                        <li><a href="reports.html">Reports</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="index.html#features">Features</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fa-solid fa-envelope"></i> support@spendwise.com</li>
+                        <li><i class="fa-solid fa-phone"></i> +91 00000 00000</li>
+                        <li><i class="fa-solid fa-location-dot"></i> Bihar, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 SpendWise. Built as a learning project.</p></div>
+        </div>
+    </footer>
+
+    <div id="toast"><i class="fa-solid fa-circle-check"></i><span id="toastMessage">Message</span></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/reports.js"></script>
+</body>
+</html>
