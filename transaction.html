@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transactions | SpendWise</title>
+    <meta name="description" content="Add, search, filter and delete your income and expense entries.">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo"><i class="fa-solid fa-wallet"></i> Spend<span>Wise</span></a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="transactions.html">Transactions</a></li>
+                <li><a href="budget.html">Budget</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>Transactions</h1>
+            <p>Record every rupee that comes in and goes out.</p>
+            <nav class="breadcrumb">
+                <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+                <i class="fa-solid fa-chevron-right"></i>
+                <span>Transactions</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ============ SECTION 1 : QUICK TOTALS ============ -->
+    <section class="app-section">
+        <div class="container">
+            <div class="summary-grid">
+                <div class="summary-card income-card">
+                    <div class="summary-top">
+                        <p>Total income</p>
+                        <div class="summary-icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
+                    </div>
+                    <div class="summary-value text-success" id="sumIncome">&#8377;0.00</div>
+                </div>
+                <div class="summary-card expense-card">
+                    <div class="summary-top">
+                        <p>Total expense</p>
+                        <div class="summary-icon"><i class="fa-solid fa-arrow-trend-down"></i></div>
+                    </div>
+                    <div class="summary-value text-danger" id="sumExpense">&#8377;0.00</div>
+                </div>
+                <div class="summary-card balance-card">
+                    <div class="summary-top">
+                        <p>Balance</p>
+                        <div class="summary-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                    </div>
+                    <div class="summary-value" id="sumBalance">&#8377;0.00</div>
+                </div>
+                <div class="summary-card budget-card">
+                    <div class="summary-top">
+                        <p>Entries</p>
+                        <div class="summary-icon"><i class="fa-solid fa-receipt"></i></div>
+                    </div>
+                    <div class="summary-value" id="sumCount">0</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SECTION 2 : ADD FORM + GUIDE ============ -->
+    <section class="app-section">
+        <div class="container form-col-grid">
+
+            <div class="card">
+                <div class="card-header"><h3><i class="fa-solid fa-plus"></i> Add a transaction</h3></div>
+
+                <form id="transactionForm" novalidate>
+                    <div class="form-group">
+                        <label>Type</label>
+                        <div class="type-selector">
+                            <div class="type-option">
+                                <input type="radio" name="type" id="typeIncome" value="income">
+                                <label for="typeIncome" class="income-label">
+                                    <i class="fa-solid fa-arrow-up"></i> Income
+                                </label>
+                            </div>
+                            <div class="type-option">
+                                <input type="radio" name="type" id="typeExpense" value="expense" checked>
+                                <label for="typeExpense" class="expense-label">
+                                    <i class="fa-solid fa-arrow-down"></i> Expense
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select id="category" class="form-control"></select>
+                        <span class="error-message" id="categoryError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="amount">Amount (&#8377;)</label>
+                        <input type="number" id="amount" class="form-control" placeholder="e.g. 250" step="0.01" min="0">
+                        <span class="error-message" id="amountError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" class="form-control">
+                        <span class="error-message" id="dateError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="note">Note (optional)</label>
+                        <input type="text" id="note" class="form-control" placeholder="e.g. lunch with friends" maxlength="60">
+                        <span class="error-message" id="noteError"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <i class="fa-solid fa-floppy-disk"></i> Save transaction
+                    </button>
+                </form>
+            </div>
+
+            <div class="card">
+                <div class="card-header"><h3><i class="fa-solid fa-lightbulb"></i> How this page works</h3></div>
+                <ul class="cat-list" style="list-style:none">
+                    <li style="display:flex;gap:13px;margin-bottom:18px">
+                        <i class="fa-solid fa-1 fa-fw" style="color:var(--primary);margin-top:4px"></i>
+                        <div><strong>Pick income or expense.</strong>
+                            <p style="font-size:0.9rem;color:var(--gray-500)">The category list changes to match your choice.</p></div>
+                    </li>
+                    <li style="display:flex;gap:13px;margin-bottom:18px">
+                        <i class="fa-solid fa-2 fa-fw" style="color:var(--primary);margin-top:4px"></i>
+                        <div><strong>Fill amount and date.</strong>
+                            <p style="font-size:0.9rem;color:var(--gray-500)">JavaScript checks each field before saving and shows the exact problem.</p></div>
+                    </li>
+                    <li style="display:flex;gap:13px;margin-bottom:18px">
+                        <i class="fa-solid fa-3 fa-fw" style="color:var(--primary);margin-top:4px"></i>
+                        <div><strong>Save it.</strong>
+                            <p style="font-size:0.9rem;color:var(--gray-500)">The entry goes into LocalStorage, so it survives a refresh.</p></div>
+                    </li>
+                    <li style="display:flex;gap:13px">
+                        <i class="fa-solid fa-4 fa-fw" style="color:var(--primary);margin-top:4px"></i>
+                        <div><strong>Everything updates.</strong>
+                            <p style="font-size:0.9rem;color:var(--gray-500)">Totals here, and the dashboard, budget and reports pages.</p></div>
+                    </li>
+                </ul>
+                <div class="alert alert-info" style="margin-top:20px;margin-bottom:0">
+                    <i class="fa-solid fa-shield-halved"></i> Data stays in this browser only. Clearing browser data removes it.
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============ SECTION 3 : SEARCH AND FILTER ============ -->
+    <section class="app-section">
+        <div class="container">
+            <div class="card">
+                <div class="card-header"><h3><i class="fa-solid fa-filter"></i> Search and filter</h3></div>
+
+                <div class="filter-bar">
+                    <div class="form-group search-field">
+                        <label for="searchInput">Search</label>
+                        <i class="fa-solid fa-magnifying-glass" style="top:66%"></i>
+                        <input type="text" id="searchInput" class="form-control" placeholder="Category, note, amount or date">
+                    </div>
+                    <div class="form-group">
+                        <label for="filterType">Type</label>
+                        <select id="filterType" class="form-control">
+                            <option value="all">All types</option>
+                            <option value="income">Income</option>
+                            <option value="expense">Expense</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="filterCategory">Category</label>
+                        <select id="filterCategory" class="form-control"></select>
+                    </div>
+                    <button class="btn btn-secondary" id="resetFilters">
+                        <i class="fa-solid fa-rotate-left"></i> Reset
+                    </button>
+                </div>
+
+                <p class="result-count" id="resultCount">Showing 0 of 0 transactions</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SECTION 4 : TRANSACTION LIST ============ -->
+    <section class="app-section">
+        <div class="container">
+            <div class="card">
+                <div class="card-header"><h3><i class="fa-solid fa-list"></i> All transactions</h3></div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Type</th>
+                                <th>Category</th>
+                                <th>Note</th>
+                                <th>Amount</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transactionTableBody"></tbody>
+                    </table>
+                </div>
+
+                <div class="empty-state" id="emptyState">
+                    <i class="fa-solid fa-receipt"></i>
+                    <h4>No transactions yet</h4>
+                    <p>Add your first income or expense using the form above.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo"><i class="fa-solid fa-wallet"></i> Spend<span>Wise</span></div>
+                    <p>A personal expense manager built with HTML, CSS and JavaScript. Track income, expenses and budget, stored privately in your browser.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Pages</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="transactions.html">Transactions</a></li>
+                        <li><a href="budget.html">Budget</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>More</h4>
+                    <ul>
+                        <li><a href="reports.html">Reports</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="index.html#features">Features</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fa-solid fa-envelope"></i> support@spendwise.com</li>
+                        <li><i class="fa-solid fa-phone"></i> +91 00000 00000</li>
+                        <li><i class="fa-solid fa-location-dot"></i> Bihar, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 SpendWise. Built as a learning project.</p></div>
+        </div>
+    </footer>
+
+    <div id="toast"><i class="fa-solid fa-circle-check"></i><span id="toastMessage">Message</span></div>
+
+    <script src="js/main.js"></script>
+    <script src="js/transactions.js"></script>
+</body>
+</html>
