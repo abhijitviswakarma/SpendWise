@@ -1,0 +1,198 @@
+/* ============================================
+   SpendWise
+   File: css/dashboard.css
+   Dashboard, Transactions, Budget, Reports
+   ============================================ */
+
+.app-section { padding: 40px 0 20px; }
+.app-section:last-of-type { padding-bottom: 60px; }
+
+/* ---------- SUMMARY CARDS ---------- */
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+.summary-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-left: 5px solid var(--primary);
+    border-radius: var(--radius-lg);
+    padding: 22px;
+    box-shadow: var(--shadow-sm);
+}
+.summary-card.income-card  { border-left-color: var(--success); }
+.summary-card.expense-card { border-left-color: var(--danger); }
+.summary-card.balance-card { border-left-color: var(--primary); }
+.summary-card.budget-card  { border-left-color: var(--warning); }
+
+.summary-top {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 14px;
+}
+.summary-top p { font-size: 0.87rem; font-weight: 600; color: var(--gray-500); }
+.summary-icon {
+    width: 42px; height: 42px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 12px; font-size: 1.05rem;
+}
+.income-card  .summary-icon { background: var(--success-light); color: var(--success); }
+.expense-card .summary-icon { background: var(--danger-light);  color: var(--danger); }
+.balance-card .summary-icon { background: var(--primary-light); color: var(--primary); }
+.budget-card  .summary-icon { background: var(--warning-light); color: var(--warning); }
+
+.summary-value { font-size: 1.75rem; font-weight: 700; color: var(--dark); }
+.summary-note { font-size: 0.82rem; color: var(--gray-500); margin-top: 5px; }
+
+/* ---------- LAYOUT GRIDS ---------- */
+.dash-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 24px;
+}
+.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+.form-col-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 24px;
+    align-items: start;
+}
+
+/* ---------- PROGRESS BARS ---------- */
+.progress-wrap { margin-top: 6px; }
+.progress-labels {
+    display: flex; justify-content: space-between;
+    font-size: 0.85rem; color: var(--gray-500); margin-bottom: 8px;
+}
+.progress-labels strong { color: var(--dark); }
+
+.progress-track {
+    height: 14px;
+    background: var(--gray-200);
+    border-radius: 50px;
+    overflow: hidden;
+}
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--success);
+    border-radius: 50px;
+    transition: width 0.6s ease, background 0.3s ease;
+}
+.progress-fill.level-ok      { background: var(--success); }
+.progress-fill.level-warning { background: var(--warning); }
+.progress-fill.level-danger  { background: var(--danger); }
+
+.progress-meta {
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+    margin-top: 12px; font-size: 0.86rem; color: var(--gray-500);
+}
+
+/* ---------- CATEGORY BAR LIST (pure CSS chart) ---------- */
+.cat-list li { margin-bottom: 17px; }
+.cat-list li:last-child { margin-bottom: 0; }
+.cat-top {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.89rem; margin-bottom: 7px;
+}
+.cat-top span { display: flex; align-items: center; gap: 8px; color: var(--gray-700); font-weight: 500; }
+.cat-top span i { color: var(--primary); width: 16px; }
+.cat-top strong { color: var(--dark); }
+.cat-track { height: 9px; background: var(--gray-200); border-radius: 50px; overflow: hidden; }
+.cat-fill {
+    height: 100%; width: 0%;
+    background: linear-gradient(90deg, var(--primary), #60a5fa);
+    border-radius: 50px; transition: width 0.6s ease;
+}
+
+/* ---------- MONTHLY SUMMARY ---------- */
+.month-list li {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr 1fr 1fr;
+    gap: 10px;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--gray-200);
+    font-size: 0.89rem;
+}
+.month-list li:last-child { border-bottom: none; }
+.month-list li.month-head {
+    font-weight: 700; color: var(--gray-500);
+    font-size: 0.8rem; letter-spacing: 0.4px;
+}
+
+/* ---------- FILTER BAR ---------- */
+.filter-bar {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr auto;
+    gap: 14px;
+    align-items: end;
+}
+.filter-bar .form-group { margin-bottom: 0; }
+.search-field { position: relative; }
+.search-field i {
+    position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+    color: var(--gray-300);
+}
+.search-field .form-control { padding-left: 40px; }
+
+.result-count {
+    font-size: 0.85rem; color: var(--gray-500);
+    margin-top: 14px;
+}
+
+/* ---------- QUICK ACTIONS ---------- */
+.quick-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+.quick-card {
+    display: flex; align-items: center; gap: 14px;
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    transition: var(--transition);
+}
+.quick-card:hover { border-color: var(--primary); box-shadow: var(--shadow); }
+.quick-card i {
+    width: 44px; height: 44px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--primary-light); color: var(--primary);
+    border-radius: 12px;
+}
+.quick-card strong { display: block; font-size: 0.95rem; }
+.quick-card span { font-size: 0.82rem; color: var(--gray-500); }
+
+/* ---------- CHART BOXES ---------- */
+.chart-box {
+    position: relative;
+    height: 320px;
+}
+.chart-box canvas { max-height: 100%; }
+
+.chart-note {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 0.82rem; color: var(--gray-500); margin-top: 14px;
+}
+
+/* ---------- TOP CATEGORY TABLE ---------- */
+.rank-badge {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 26px; height: 26px;
+    background: var(--primary-light); color: var(--primary-dark);
+    border-radius: 50%; font-size: 0.78rem; font-weight: 700;
+}
+
+/* ---------- DANGER ZONE ---------- */
+.danger-zone {
+    border: 1px dashed var(--danger);
+    background: var(--danger-light);
+}
+.danger-zone .card-header { border-bottom-color: rgba(220, 38, 38, 0.25); }
+.danger-zone .card-header h3 i { color: var(--danger); }
+.danger-zone p { font-size: 0.9rem; color: var(--gray-700); margin-bottom: 16px; }
