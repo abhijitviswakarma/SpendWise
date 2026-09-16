@@ -3,36 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>SpendWise | Personal Expense Manager</title>
+    <meta name="description" content="SpendWise - Track income, expenses and budget in one simple personal expense manager.">
 
-    <meta
-        name="description"
-        content="SpendWise - Track income, expenses and budget in one simple personal expense manager."
-    >
-
-    <!-- Font Awesome -->
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    >
-
-    <!-- CSS files are in repository root -->
-    <link rel="stylesheet" href="pages.css">
-    <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
-
 <body>
 
     <!-- ============ NAVBAR ============ -->
     <nav class="navbar">
         <div class="nav-container">
-
             <a href="index.html" class="logo">
-                <i class="fa-solid fa-wallet"></i>
-                Spend<span>Wise</span>
+                <i class="fa-solid fa-wallet"></i> Spend<span>Wise</span>
             </a>
-
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="dashboard.html">Dashboard</a></li>
@@ -42,613 +28,245 @@
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
-
-            <button
-                class="menu-toggle"
-                id="menuToggle"
-                aria-label="Open menu"
-                type="button"
-            >
+            <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
                 <i class="fa-solid fa-bars"></i>
             </button>
-
         </div>
     </nav>
 
-
     <!-- ============ SECTION 1 : HERO ============ -->
     <section class="hero">
-
         <div class="container hero-grid">
-
             <div class="hero-text fade-up">
-
-                <span class="section-tag">
-                    <i class="fa-solid fa-bolt"></i>
-                    Smart money tracking
-                </span>
-
+                <span class="section-tag"><i class="fa-solid fa-bolt"></i> Smart money tracking</span>
                 <h1>Take full control of your money</h1>
-
                 <p>
-                    SpendWise ek simple personal expense manager hai.
-                    Income aur expenses record karo, monthly budget set karo,
-                    aur visual reports se samjho ki paisa kahan ja raha hai.
+                    SpendWise ek simple personal expense manager hai. Income aur expenses record karo,
+                    monthly budget set karo, aur visual reports se samjho ki paisa kahan ja raha hai.
                     Saara data aapke apne browser me safe rehta hai.
                 </p>
-
                 <div class="hero-btns">
-
                     <a href="transactions.html" class="btn btn-primary">
-                        <i class="fa-solid fa-plus"></i>
-                        Add a transaction
+                        <i class="fa-solid fa-plus"></i> Add a transaction
                     </a>
-
                     <a href="dashboard.html" class="btn btn-outline">
-                        <i class="fa-solid fa-chart-line"></i>
-                        Open dashboard
+                        <i class="fa-solid fa-chart-line"></i> Open dashboard
                     </a>
-
                 </div>
-
                 <ul class="hero-points">
-
-                    <li>
-                        <i class="fa-solid fa-circle-check"></i>
-                        No signup needed
-                    </li>
-
-                    <li>
-                        <i class="fa-solid fa-circle-check"></i>
-                        Works offline
-                    </li>
-
-                    <li>
-                        <i class="fa-solid fa-circle-check"></i>
-                        Free to use
-                    </li>
-
+                    <li><i class="fa-solid fa-circle-check"></i> No signup needed</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Works offline</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Free to use</li>
                 </ul>
-
             </div>
 
-
             <div class="hero-visual fade-up">
-
                 <div class="preview-card">
-
                     <div class="preview-head">
-
-                        <span>
-                            <i class="fa-solid fa-chart-pie"></i>
-                            Overall summary
-                        </span>
-
+                        <span><i class="fa-solid fa-chart-pie"></i> Overall summary</span>
                         <i class="fa-solid fa-ellipsis"></i>
-
                     </div>
-
-
                     <div class="preview-balance">
-
                         <p>Current balance</p>
-
                         <h3 id="heroBalance">&#8377;0.00</h3>
-
                     </div>
-
-
                     <div class="preview-stats">
-
                         <div class="preview-stat income">
-
                             <i class="fa-solid fa-arrow-trend-up"></i>
-
                             <div>
                                 <small>Income</small>
                                 <strong id="heroIncome">&#8377;0.00</strong>
                             </div>
-
                         </div>
-
-
                         <div class="preview-stat expense">
-
                             <i class="fa-solid fa-arrow-trend-down"></i>
-
                             <div>
                                 <small>Expense</small>
                                 <strong id="heroExpense">&#8377;0.00</strong>
                             </div>
-
                         </div>
-
                     </div>
-
-
-                    <div class="preview-bar">
-                        <div
-                            class="preview-bar-fill"
-                            id="heroBar"
-                        ></div>
-                    </div>
-
-
+                    <div class="preview-bar"><div class="preview-bar-fill" id="heroBar"></div></div>
                     <p class="preview-note">
-                        <i class="fa-solid fa-circle-info"></i>
-                        Live figures from your saved transactions
+                        <i class="fa-solid fa-circle-info"></i> Live figures from your saved transactions
                     </p>
-
                 </div>
-
             </div>
-
         </div>
-
     </section>
-
 
     <!-- ============ SECTION 2 : FEATURES ============ -->
     <section class="section section-alt" id="features">
-
         <div class="container">
-
             <div class="section-header">
-
                 <span class="section-tag">Features</span>
-
                 <h2>Everything you need to manage money</h2>
-
-                <p>
-                    Har feature ek hi kaam ke liye -
-                    aapka kharcha clear aur controlled rahe.
-                </p>
-
+                <p>Har feature ek hi kaam ke liye - aapka kharcha clear aur controlled rahe.</p>
             </div>
-
 
             <div class="features-grid">
-
                 <article class="feature-card">
-
-                    <div class="feature-icon blue">
-                        <i class="fa-solid fa-right-left"></i>
-                    </div>
-
+                    <div class="feature-icon blue"><i class="fa-solid fa-right-left"></i></div>
                     <h3>Income and expense tracking</h3>
-
-                    <p>
-                        Har entry category, amount aur date ke saath
-                        save hoti hai. Ek click me delete bhi.
-                    </p>
-
+                    <p>Har entry category, amount aur date ke saath save hoti hai. Ek click me delete bhi.</p>
                 </article>
-
-
                 <article class="feature-card">
-
-                    <div class="feature-icon green">
-                        <i class="fa-solid fa-gauge-high"></i>
-                    </div>
-
+                    <div class="feature-icon green"><i class="fa-solid fa-gauge-high"></i></div>
                     <h3>Live dashboard</h3>
-
-                    <p>
-                        Total income, total expense aur current balance
-                        turant calculate ho jate hain.
-                    </p>
-
+                    <p>Total income, total expense aur current balance turant calculate ho jate hain.</p>
                 </article>
-
-
                 <article class="feature-card">
-
-                    <div class="feature-icon orange">
-                        <i class="fa-solid fa-bullseye"></i>
-                    </div>
-
+                    <div class="feature-icon orange"><i class="fa-solid fa-bullseye"></i></div>
                     <h3>Monthly budget</h3>
-
-                    <p>
-                        Budget set karo, progress bar dekho,
-                        aur limit paas aane par warning milti hai.
-                    </p>
-
+                    <p>Budget set karo, progress bar dekho, aur limit paas aane par warning milti hai.</p>
                 </article>
-
-
                 <article class="feature-card">
-
-                    <div class="feature-icon purple">
-                        <i class="fa-solid fa-chart-column"></i>
-                    </div>
-
+                    <div class="feature-icon purple"><i class="fa-solid fa-chart-column"></i></div>
                     <h3>Visual reports</h3>
-
-                    <p>
-                        Category-wise aur month-wise charts se
-                        spending pattern ek nazar me dikh jata hai.
-                    </p>
-
+                    <p>Category-wise aur month-wise charts se spending pattern ek nazar me dikh jata hai.</p>
                 </article>
-
-
                 <article class="feature-card">
-
-                    <div class="feature-icon teal">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </div>
-
+                    <div class="feature-icon teal"><i class="fa-solid fa-magnifying-glass"></i></div>
                     <h3>Search and filter</h3>
-
-                    <p>
-                        Transaction list ko keyword, type ya category
-                        se turant filter karo.
-                    </p>
-
+                    <p>Transaction list ko keyword, type ya category se turant filter karo.</p>
                 </article>
-
-
                 <article class="feature-card">
-
-                    <div class="feature-icon red">
-                        <i class="fa-solid fa-shield-halved"></i>
-                    </div>
-
+                    <div class="feature-icon red"><i class="fa-solid fa-shield-halved"></i></div>
                     <h3>Private by design</h3>
-
-                    <p>
-                        Data LocalStorage me aapke browser me rehta hai -
-                        koi server nahi, koi account nahi.
-                    </p>
-
+                    <p>Data LocalStorage me aapke browser me rehta hai - koi server nahi, koi account nahi.</p>
                 </article>
-
             </div>
-
         </div>
-
     </section>
-
 
     <!-- ============ SECTION 3 : HOW IT WORKS ============ -->
     <section class="section" id="how">
-
         <div class="container">
-
             <div class="section-header">
-
                 <span class="section-tag">How it works</span>
-
                 <h2>Three steps, that is all</h2>
-
-                <p>
-                    Na koi account, na koi setup. Bas kholo aur use karo.
-                </p>
-
+                <p>Na koi account, na koi setup. Bas kholo aur use karo.</p>
             </div>
-
 
             <div class="steps-grid">
-
                 <div class="step-card">
-
                     <span class="step-number">01</span>
-
                     <i class="fa-solid fa-pen-to-square step-icon"></i>
-
                     <h3>Add your transactions</h3>
-
-                    <p>
-                        Income ya expense chuno, category select karo,
-                        amount aur date daal kar save karo.
-                    </p>
-
+                    <p>Income ya expense chuno, category select karo, amount aur date daal kar save karo.</p>
                 </div>
-
-
-                <div class="step-arrow">
-                    <i class="fa-solid fa-arrow-right-long"></i>
-                </div>
-
-
+                <div class="step-arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
                 <div class="step-card">
-
                     <span class="step-number">02</span>
-
                     <i class="fa-solid fa-floppy-disk step-icon"></i>
-
                     <h3>Data gets saved</h3>
-
-                    <p>
-                        Har entry LocalStorage me store hoti hai,
-                        isliye refresh ke baad bhi data rehta hai.
-                    </p>
-
+                    <p>Har entry LocalStorage me store hoti hai, isliye refresh ke baad bhi data rehta hai.</p>
                 </div>
-
-
-                <div class="step-arrow">
-                    <i class="fa-solid fa-arrow-right-long"></i>
-                </div>
-
-
+                <div class="step-arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
                 <div class="step-card">
-
                     <span class="step-number">03</span>
-
                     <i class="fa-solid fa-chart-simple step-icon"></i>
-
                     <h3>Track and analyse</h3>
-
-                    <p>
-                        Dashboard, budget progress aur saare charts
-                        apne aap update ho jate hain.
-                    </p>
-
+                    <p>Dashboard, budget progress aur saare charts apne aap update ho jate hain.</p>
                 </div>
-
             </div>
-
         </div>
-
     </section>
-
 
     <!-- ============ SECTION 4 : STATISTICS ============ -->
     <section class="stats-section">
-
         <div class="container">
-
             <div class="section-header">
-
-                <span class="section-tag light">
-                    Your numbers
-                </span>
-
+                <span class="section-tag light">Your numbers</span>
                 <h2>Your activity at a glance</h2>
-
             </div>
-
-
             <div class="stats-grid">
-
                 <div class="stat-box">
-
                     <i class="fa-solid fa-receipt"></i>
-
                     <h3 id="statTransactions">0</h3>
-
                     <p>Total transactions</p>
-
                 </div>
-
-
                 <div class="stat-box">
-
                     <i class="fa-solid fa-arrow-trend-up"></i>
-
                     <h3 id="statIncome">&#8377;0</h3>
-
                     <p>Total income</p>
-
                 </div>
-
-
                 <div class="stat-box">
-
                     <i class="fa-solid fa-arrow-trend-down"></i>
-
                     <h3 id="statExpense">&#8377;0</h3>
-
                     <p>Total expense</p>
-
                 </div>
-
-
                 <div class="stat-box">
-
                     <i class="fa-solid fa-layer-group"></i>
-
                     <h3 id="statCategories">0</h3>
-
                     <p>Categories used</p>
-
                 </div>
-
             </div>
-
         </div>
-
     </section>
-
 
     <!-- ============ SECTION 5 : CTA ============ -->
     <section class="cta-section">
-
         <div class="container cta-inner">
-
             <div>
-
                 <h2>Ready to spend wisely?</h2>
-
-                <p>
-                    Aaj hi pehla transaction add karo aur
-                    apne kharche par control lena shuru karo.
-                </p>
-
+                <p>Aaj hi pehla transaction add karo aur apne kharche par control lena shuru karo.</p>
             </div>
-
-
             <div class="cta-btns">
-
-                <a href="transactions.html" class="btn btn-light">
-                    <i class="fa-solid fa-plus"></i>
-                    Get started
-                </a>
-
-                <a href="about.html" class="btn btn-outline-light">
-                    <i class="fa-solid fa-circle-info"></i>
-                    Learn more
-                </a>
-
+                <a href="transactions.html" class="btn btn-light"><i class="fa-solid fa-plus"></i> Get started</a>
+                <a href="about.html" class="btn btn-outline-light"><i class="fa-solid fa-circle-info"></i> Learn more</a>
             </div>
-
         </div>
-
     </section>
-
 
     <!-- ============ FOOTER ============ -->
     <footer class="footer">
-
         <div class="container">
-
             <div class="footer-grid">
-
                 <div class="footer-col">
-
-                    <div class="logo">
-                        <i class="fa-solid fa-wallet"></i>
-                        Spend<span>Wise</span>
-                    </div>
-
-                    <p>
-                        A personal expense manager built with HTML,
-                        CSS and JavaScript. Track income, expenses and
-                        budget, stored privately in your browser.
-                    </p>
-
-
+                    <div class="logo"><i class="fa-solid fa-wallet"></i> Spend<span>Wise</span></div>
+                    <p>A personal expense manager built with HTML, CSS and JavaScript. Track income, expenses and budget, stored privately in your browser.</p>
                     <div class="social-links">
-
-                        <a href="#" aria-label="GitHub">
-                            <i class="fa-brands fa-github"></i>
-                        </a>
-
-                        <a href="#" aria-label="LinkedIn">
-                            <i class="fa-brands fa-linkedin-in"></i>
-                        </a>
-
-                        <a href="#" aria-label="Twitter">
-                            <i class="fa-brands fa-x-twitter"></i>
-                        </a>
-
-                        <a href="#" aria-label="Instagram">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
-
+                        <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
                     </div>
-
                 </div>
-
-
                 <div class="footer-col">
-
                     <h4>Pages</h4>
-
                     <ul>
-
-                        <li>
-                            <a href="index.html">Home</a>
-                        </li>
-
-                        <li>
-                            <a href="dashboard.html">Dashboard</a>
-                        </li>
-
-                        <li>
-                            <a href="transactions.html">Transactions</a>
-                        </li>
-
-                        <li>
-                            <a href="budget.html">Budget</a>
-                        </li>
-
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="transactions.html">Transactions</a></li>
+                        <li><a href="budget.html">Budget</a></li>
                     </ul>
-
                 </div>
-
-
                 <div class="footer-col">
-
                     <h4>More</h4>
-
                     <ul>
-
-                        <li>
-                            <a href="reports.html">Reports</a>
-                        </li>
-
-                        <li>
-                            <a href="about.html">About</a>
-                        </li>
-
-                        <li>
-                            <a href="contact.html">Contact</a>
-                        </li>
-
-                        <li>
-                            <a href="#features">Features</a>
-                        </li>
-
+                        <li><a href="reports.html">Reports</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#features">Features</a></li>
                     </ul>
-
                 </div>
-
-
                 <div class="footer-col">
-
                     <h4>Contact</h4>
-
                     <ul>
-
-                        <li>
-                            <i class="fa-solid fa-envelope"></i>
-                            support@spendwise.com
-                        </li>
-
-                        <li>
-                            <i class="fa-solid fa-phone"></i>
-                            +91 00000 00000
-                        </li>
-
-                        <li>
-                            <i class="fa-solid fa-location-dot"></i>
-                            Bihar, India
-                        </li>
-
+                        <li><i class="fa-solid fa-envelope"></i> support@spendwise.com</li>
+                        <li><i class="fa-solid fa-phone"></i> +91 00000 00000</li>
+                        <li><i class="fa-solid fa-location-dot"></i> Bihar, India</li>
                     </ul>
-
                 </div>
-
             </div>
-
-
-            <div class="footer-bottom">
-
-                <p>
-                    &copy; 2026 SpendWise.
-                    Built as a learning project.
-                </p>
-
-            </div>
-
+            <div class="footer-bottom"><p>&copy; 2026 SpendWise. Built as a learning project.</p></div>
         </div>
-
     </footer>
 
+    <div id="toast"><i class="fa-solid fa-circle-check"></i><span id="toastMessage">Message</span></div>
 
-    <!-- Toast -->
-    <div id="toast">
-        <i class="fa-solid fa-circle-check"></i>
-        <span id="toastMessage">Message</span>
-    </div>
-
-
-    <!-- JavaScript files are in repository root -->
-    <script src="main.js"></script>
-    <script src="home.js"></script>
-
+    <script src="js/main.js"></script>
+    <script src="js/home.js"></script>
 </body>
 </html>
