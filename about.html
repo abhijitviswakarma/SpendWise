@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | SpendWise</title>
+    <meta name="description" content="About the SpendWise project, its features, technologies and developer.">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo"><i class="fa-solid fa-wallet"></i> Spend<span>Wise</span></a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="transactions.html">Transactions</a></li>
+                <li><a href="budget.html">Budget</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>About SpendWise</h1>
+            <p>What this project is, how it is built, and who built it.</p>
+            <nav class="breadcrumb">
+                <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+                <i class="fa-solid fa-chevron-right"></i>
+                <span>About</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ============ SECTION 1 : PROJECT INFO ============ -->
+    <section class="section">
+        <div class="container about-grid">
+            <div class="about-text">
+                <h2>A small tool for a real problem</h2>
+                <p>
+                    Zyada log apna kharcha isliye track nahi karte kyunki apps bahut heavy hote hain -
+                    signup, permissions, ads. SpendWise iska ulta hai: ek page kholo, entry daalo, ho gaya.
+                </p>
+                <p>
+                    Project poori tarah front-end hai. Koi backend ya database nahi. Har transaction browser
+                    ke LocalStorage me JSON ke roop me store hota hai, aur JavaScript usi data se totals,
+                    budget progress aur charts banata hai.
+                </p>
+                <p>
+                    Ye project HTML structure, CSS layout aur JavaScript logic - teeno ko ek saath practice
+                    karne ke liye banaya gaya hai, ek aise use case par jo rozmarra ki zindagi se juda hai.
+                </p>
+                <a href="transactions.html" class="btn btn-primary">
+                    <i class="fa-solid fa-plus"></i> Try it now
+                </a>
+            </div>
+
+            <div class="card">
+                <div class="card-header"><h3><i class="fa-solid fa-circle-info"></i> Project at a glance</h3></div>
+                <ul class="info-list">
+                    <li>
+                        <i class="fa-solid fa-tag"></i>
+                        <div><strong>Project name</strong><span>SpendWise - Personal Expense Manager</span></div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-layer-group"></i>
+                        <div><strong>Type</strong><span>Multi-page front-end web application</span></div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-file-code"></i>
+                        <div><strong>Pages</strong><span>Seven linked pages with multiple sections each</span></div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-database"></i>
+                        <div><strong>Storage</strong><span>Browser LocalStorage, no server involved</span></div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-mobile-screen"></i>
+                        <div><strong>Responsive</strong><span>Works on mobile, tablet and desktop</span></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SECTION 2 : FEATURES ============ -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Features</span>
+                <h2>What the app can do</h2>
+            </div>
+
+            <div class="features-grid">
+                <article class="feature-card">
+                    <div class="feature-icon blue"><i class="fa-solid fa-plus"></i></div>
+                    <h3>Add and delete entries</h3>
+                    <p>Full create and delete flow with validation on every field before saving.</p>
+                </article>
+                <article class="feature-card">
+                    <div class="feature-icon green"><i class="fa-solid fa-calculator"></i></div>
+                    <h3>Automatic calculations</h3>
+                    <p>Income, expense, balance, monthly totals and averages are computed on load.</p>
+                </article>
+                <article class="feature-card">
+                    <div class="feature-icon orange"><i class="fa-solid fa-bell"></i></div>
+                    <h3>Budget warnings</h3>
+                    <p>Colour changes and messages at 50%, 75%, 90% and beyond the limit.</p>
+                </article>
+                <article class="feature-card">
+                    <div class="feature-icon purple"><i class="fa-solid fa-chart-column"></i></div>
+                    <h3>Four chart types</h3>
+                    <p>Doughnut, pie, bar and line charts generated from live stored data.</p>
+                </article>
+                <article class="feature-card">
+                    <div class="feature-icon teal"><i class="fa-solid fa-filter"></i></div>
+                    <h3>Search and filter</h3>
+                    <p>Keyword search combined with type and category filters on one list.</p>
+                </article>
+                <article class="feature-card">
+                    <div class="feature-icon red"><i class="fa-solid fa-circle-check"></i></div>
+                    <h3>Form validation</h3>
+                    <p>Inline error messages, email and phone patterns, and a success confirmation.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SECTION 3 : TECHNOLOGIES ============ -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Technologies</span>
+                <h2>Built with</h2>
+                <p>Plain web technologies, no framework, no build step.</p>
+            </div>
+
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <i class="fa-brands fa-html5 tech-html"></i>
+                    <h4>HTML5</h4>
+                    <span>Structure</span>
+                </div>
+                <div class="tech-card">
+                    <i class="fa-brands fa-css3-alt tech-css"></i>
+                    <h4>CSS3</h4>
+                    <span>Layout and design</span>
+                </div>
+                <div class="tech-card">
+                    <i class="fa-brands fa-js tech-js"></i>
+                    <h4>JavaScript</h4>
+                    <span>All the logic</span>
+                </div>
+                <div class="tech-card">
+                    <i class="fa-solid fa-database tech-store"></i>
+                    <h4>LocalStorage</h4>
+                    <span>Data persistence</span>
+                </div>
+                <div class="tech-card">
+                    <i class="fa-brands fa-font-awesome tech-fa"></i>
+                    <h4>Font Awesome</h4>
+                    <span>All icons</span>
+                </div>
+                <div class="tech-card">
+                    <i class="fa-solid fa-chart-pie tech-chart"></i>
+                    <h4>Chart.js</h4>
+                    <span>Report charts</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SECTION 4 : HOW IT WAS BUILT ============ -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Process</span>
+                <h2>How the project was built</h2>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>Planning the pages</h4>
+                    <p>Seven pages were decided first, each with a clear job, so navigation stays simple.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Designing the shared layout</h4>
+                    <p>One global stylesheet holds the colour tokens, navbar, cards, forms and footer used everywhere.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Writing the core logic</h4>
+                    <p>A single main.js file handles storage, calculations and formatting. Every page reuses it.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Page-level scripts</h4>
+                    <p>Each page has its own script that reads from the core and renders only what that page needs.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Responsive pass</h4>
+                    <p>A separate stylesheet handles tablet and mobile breakpoints, including the collapsible menu.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SECTION 5 : DEVELOPER ============ -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Developer</span>
+                <h2>Who built this</h2>
+            </div>
+
+            <div class="developer-card">
+                <div class="dev-avatar"><i class="fa-solid fa-user"></i></div>
+                <div class="dev-info">
+                    <h3>Abhijit</h3>
+                    <p class="dev-role">Web Developer</p>
+                    <p>
+                        Engineering student and web developer working with HTML, CSS and JavaScript.
+                        SpendWise was built to practise turning a real everyday problem into a working
+                        multi-page application with proper data handling.
+                    </p>
+                    <div class="dev-links">
+                        <a href="contact.html" class="btn btn-primary btn-sm"><i class="fa-solid fa-envelope"></i> Get in touch</a>
+                        <a href="#" class="btn btn-outline btn-sm"><i class="fa-brands fa-github"></i> GitHub</a>
+                        <a href="#" class="btn btn-outline btn-sm"><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo"><i class="fa-solid fa-wallet"></i> Spend<span>Wise</span></div>
+                    <p>A personal expense manager built with HTML, CSS and JavaScript. Track income, expenses and budget, stored privately in your browser.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Pages</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="transactions.html">Transactions</a></li>
+                        <li><a href="budget.html">Budget</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>More</h4>
+                    <ul>
+                        <li><a href="reports.html">Reports</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="index.html#features">Features</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fa-solid fa-envelope"></i> support@spendwise.com</li>
+                        <li><i class="fa-solid fa-phone"></i> +91 00000 00000</li>
+                        <li><i class="fa-solid fa-location-dot"></i> Bihar, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 SpendWise. Built as a learning project.</p></div>
+        </div>
+    </footer>
+
+    <div id="toast"><i class="fa-solid fa-circle-check"></i><span id="toastMessage">Message</span></div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
