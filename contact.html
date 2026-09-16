@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | SpendWise</title>
+    <meta name="description" content="Send a message, report a bug or ask a question about SpendWise.">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo"><i class="fa-solid fa-wallet"></i> Spend<span>Wise</span></a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="transactions.html">Transactions</a></li>
+                <li><a href="budget.html">Budget</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>Contact</h1>
+            <p>Questions, bugs or suggestions - send them here.</p>
+            <nav class="breadcrumb">
+                <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+                <i class="fa-solid fa-chevron-right"></i>
+                <span>Contact</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ============ SECTION 1 : INFO + FORM ============ -->
+    <section class="section">
+        <div class="container contact-grid">
+
+            <div class="card">
+                <div class="card-header"><h3><i class="fa-solid fa-address-card"></i> Reach us</h3></div>
+                <ul class="contact-info-list">
+                    <li>
+                        <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                        <div><strong>Email</strong><span>support@spendwise.com</span></div>
+                    </li>
+                    <li>
+                        <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+                        <div><strong>Phone</strong><span>+91 00000 00000</span></div>
+                    </li>
+                    <li>
+                        <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div><strong>Location</strong><span>Bihar, India</span></div>
+                    </li>
+                    <li>
+                        <div class="contact-icon"><i class="fa-solid fa-clock"></i></div>
+                        <div><strong>Reply time</strong><span>Usually within two working days</span></div>
+                    </li>
+                </ul>
+
+                <div class="alert alert-info" style="margin-top:20px;margin-bottom:0">
+                    <i class="fa-solid fa-circle-info"></i> This form is validated in the browser and does not send data anywhere.
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header"><h3><i class="fa-solid fa-paper-plane"></i> Send a message</h3></div>
+
+                <div class="alert alert-success hidden" id="formSuccess"></div>
+
+                <form id="contactForm" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full name</label>
+                            <input type="text" id="name" class="form-control" placeholder="Your name">
+                            <span class="error-message" id="nameError"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" placeholder="you@example.com">
+                            <span class="error-message" id="emailError"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Phone (optional)</label>
+                            <input type="tel" id="phone" class="form-control" placeholder="10 digit number">
+                            <span class="error-message" id="phoneError"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject" class="form-control">
+                                <option value="">Choose a subject</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="bug">Report a bug</option>
+                                <option value="feature">Feature request</option>
+                                <option value="other">Something else</option>
+                            </select>
+                            <span class="error-message" id="subjectError"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" class="form-control" placeholder="Write your message here..."></textarea>
+                        <span class="error-message" id="messageError"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa-solid fa-paper-plane"></i> Send message
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============ SECTION 2 : FAQ ============ -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">FAQ</span>
+                <h2>Common questions</h2>
+            </div>
+
+            <div style="max-width:760px;margin:0 auto">
+                <div class="faq-item open">
+                    <button class="faq-question">
+                        Where is my data stored?
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        Everything sits in your browser's LocalStorage on this device. Nothing is uploaded, and no account is needed.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Will my entries survive a refresh?
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        Yes. They stay until you delete them or clear your browser data. Using a different browser or device shows a separate, empty list.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Can I change a transaction after saving it?
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        Delete the entry from the Transactions page and add the corrected one. Deleting is instant and asks for confirmation first.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How is the budget percentage calculated?
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        Only expenses dated inside the current calendar month count. That total is divided by your saved budget to get the percentage.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Why are my charts empty?
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        Charts are built from saved transactions. Add a few entries and reload the Reports page.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SECTION 3 : CTA ============ -->
+    <section class="cta-section">
+        <div class="container cta-inner">
+            <div>
+                <h2>Prefer to just start?</h2>
+                <p>Skip the form and add your first transaction right away.</p>
+            </div>
+            <div class="cta-btns">
+                <a href="transactions.html" class="btn btn-light"><i class="fa-solid fa-plus"></i> Add a transaction</a>
+                <a href="dashboard.html" class="btn btn-outline-light"><i class="fa-solid fa-gauge-high"></i> Open dashboard</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo"><i class="fa-solid fa-wallet"></i> Spend<span>Wise</span></div>
+                    <p>A personal expense manager built with HTML, CSS and JavaScript. Track income, expenses and budget, stored privately in your browser.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Pages</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="transactions.html">Transactions</a></li>
+                        <li><a href="budget.html">Budget</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>More</h4>
+                    <ul>
+                        <li><a href="reports.html">Reports</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="index.html#features">Features</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fa-solid fa-envelope"></i> support@spendwise.com</li>
+                        <li><i class="fa-solid fa-phone"></i> +91 00000 00000</li>
+                        <li><i class="fa-solid fa-location-dot"></i> Bihar, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 SpendWise. Built as a learning project.</p></div>
+        </div>
+    </footer>
+
+    <div id="toast"><i class="fa-solid fa-circle-check"></i><span id="toastMessage">Message</span></div>
+
+    <script src="js/main.js"></script>
+    <script src="js/contact.js"></script>
+</body>
+</html>
